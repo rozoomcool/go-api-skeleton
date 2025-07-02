@@ -5,6 +5,8 @@
 LOG_FILE=abc.log
 DEBUG=true
 PORT=8000
+GOOSE_DRIVER=postgres
+GOOSE_DBSTRING=postgresql://postgres:root@127.0.0.1:5432/gotesttask?sslmode=disable
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
