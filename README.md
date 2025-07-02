@@ -2,6 +2,8 @@
 
 ## ENV FILE EXAMPLE (with my standart values)
 ```env
+LOG_FILE=abc.log
+DEBUG=true
 PORT=8000
 DB_HOST=localhost
 DB_PORT=5432
