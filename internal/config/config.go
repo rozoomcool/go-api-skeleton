@@ -1,6 +1,10 @@
 package config
 
-import "time"
+import (
+	"time"
+
+	"github.com/spf13/viper"
+)
 
 type Config struct {
 	Port       int           `mapstructure:"PORT"`
@@ -12,4 +16,17 @@ type Config struct {
 	AccessTTL  time.Duration `mapstructure:"ACCESS_TTL"`
 	RefreshTTL time.Duration `mapstructure:"REFRESH_TTL"`
 	WebhookURL string        `mapstructure:"WEBHOOK_URL"`
+}
+
+func Load() (*Config, error) {
+	v := viper.New()
+	v.SetConfigFile(".env")
+	v.AutomaticEnv()
+	_ = v.ReadInConfig()
+
+	var c Config
+	if err := v.Unmarshal(&c); err != nil {
+		return nil, err
+	}
+	return &c, nil
 }
